@@ -7,19 +7,21 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+container_name="jenkins"
+
 # Stop & remove container, if running
-if [ "$(docker ps -a | grep jenkins)" ]; then
+if [ "$(docker ps -a | grep $container_name)" ]; then
     docker container stop jenkins && docker container rm jenkins
 fi
 
 # Run, mounting a few volumes
-# Note that the R library is version-specific
 docker container run \
     -d \
     -p 8080:8080 \
     -p 50000:50000 \
     -v jenkins_home:/var/jenkins_home/ \
-    --name jenkins \
+    --name "$container_name" \
     "$1"
 
+printf "Started container with name: '$container_name'\n"
 exit 0
