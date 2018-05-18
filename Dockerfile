@@ -10,12 +10,14 @@ RUN apt-get update && apt-get dist-upgrade -y \
     && apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
 
 # Separate RUN command, so piping to tee works. I'm open to suggested changes
+# Regarless, note that the URL is R version-specific
 RUN echo "deb https://cran.rstudio.com/bin/linux/debian $(lsb_release -cs)-cran35/" | tee -a /etc/apt/sources.list
 
 # Install all the Linux packages you may need, then dump the cache/install deps/etc.
 RUN apt-get update \
     && apt-get install -y \
         sudo \
+        p7zip-full \
         ed \
         less \
         locales \
