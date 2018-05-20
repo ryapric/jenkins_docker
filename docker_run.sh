@@ -7,21 +7,33 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-container_name="jenkins"
+# Grab all the images you may need for jobs, including the Jenkins LTS image
+docker image pull jenkins/jenkins:lts >/dev/null
+docker image pull rocker/tidyverse:3.5.0 >/dev/null
 
 # Stop & remove container, if running
+container_name="jenkins"
 if [ "$(docker ps -a | grep $container_name)" ]; then
-    docker container stop jenkins && docker container rm jenkins
+    docker container stop jenkins >/dev/null
+    docker container rm jenkins >/dev/null
 fi
 
-# Run, mounting a few volumes
+# Run, mounting the host Docker socket, binary executable, and the Jenkins homedir
+# Based on an old post answer from 2014, but still works as intended:
+# https://forums.docker.com/t/using-docker-in-a-dockerized-jenkins-container/322
+docker_sock="/var/run/docker.sock"
+docker_bin="$(which docker)"
+
 docker container run \
     -d \
     -p 8080:8080 \
     -p 50000:50000 \
+    -v "$docker_sock":"$docker_sock" \
+    -v "$docker_bin":"$docker_bin" \
     -v jenkins_home:/var/jenkins_home/ \
+    -u root \
     --name "$container_name" \
-    "$1"
+    "$1" >/dev/null
 
 printf "Started container with name: '$container_name'\n"
 exit 0
