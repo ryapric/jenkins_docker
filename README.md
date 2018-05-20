@@ -2,10 +2,11 @@ Docker Image Builder & Run Utilities for Jenkins
 ================================================
 Ryan Price, <ryapric@gmail.com>
 
-This repository serves as a set of tools to deploy a Jenkins CI instance with
-just a few short commands. The Jenkins master is deployed as a Docker container,
-and is designed to run its jobs using Docker, as well! This works by [binding
-the host's Docker socket and binary path, to the Jenkins
+This repository serves as a set of tools to deploy a [Jenkins
+CI](https://jenkins.io/) instance with just a few short commands. The Jenkins
+master is deployed as a [Docker](https://www.docker.com/) container, and is
+designed to run its jobs using Docker, as well! This works by [binding the
+host's Docker socket and binary path, to the Jenkins
 container](https://forums.docker.com/t/using-docker-in-a-dockerized-jenkins-container/322),
 which makes the host installation of Docker available to Jenkins without a
 redundant second installation.
@@ -89,7 +90,7 @@ Other Things You Can Do!
 -----------------------
 
 Feel free, of course, to fork this repository at any time, and use it as
-boilerplate to VC your own desired Jenkins configuratons. Some ideas:
+boilerplate to VC your own desired Jenkins configurations. Some ideas:
 
 - Modify the `Dockerfile` to build a Jenkins image that has more programs
 pre-installed when the container runs (good if you don't want Docker to be the
