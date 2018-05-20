@@ -8,8 +8,9 @@ if [ -z "$1" ]; then
 fi
 
 # Grab all the images you may need for jobs, including the Jenkins LTS image
-docker image pull jenkins/jenkins:lts >/dev/null
-docker image pull rocker/tidyverse:3.5.0 >/dev/null
+printf "Pulling images listed in docker_run.sh ...\n"
+docker image pull jenkins/jenkins:lts
+docker image pull rocker/tidyverse:3.5.0
 
 # Stop & remove container, if running
 container_name="jenkins"
