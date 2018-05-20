@@ -49,7 +49,7 @@ running the Jenkins container, are as follows:
 
 1. Install Docker. Recent means of Docker installation is quite easy, via their
 official install script, which can be run via:
-    - `curl -sSL https://get.docker.com| sh`
+    - `curl -sSL https://get.docker.com | sh`
 
 1. Build a modified Jenkins image using the included `Dockerfile`. This is
 unfortunately necessary because to use Docker build agents, inside of Docker, at
