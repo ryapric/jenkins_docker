@@ -15,8 +15,8 @@ docker image pull rocker/tidyverse:3.5.0
 # Stop & remove container, if running
 container_name="jenkins"
 if [ "$(docker ps -a | grep $container_name)" ]; then
-    docker container stop jenkins >/dev/null
-    docker container rm jenkins >/dev/null
+    docker container stop "$container_name" >/dev/null
+    docker container rm "$container_name" >/dev/null
 fi
 
 # Run, mounting the host Docker socket, binary executable, and the Jenkins homedir
