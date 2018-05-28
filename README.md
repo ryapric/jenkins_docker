@@ -86,6 +86,12 @@ If you want to make some `docker_run` changes, just save them and re-run the
 script. As stated above, it should handle the container restart for you pretty
 elegantly.
 
+If you have read & understood the above steps, and are comfortable with them,
+you can also just use the one-step deployment script in this repo,
+`full_deploy_from_scratch.sh`. It is important to understand all of the above,
+however, since restarting the container, rebuilding the image, etc. as needed
+have their own scripts.
+
 Other Things You Can Do!
 -----------------------
 
