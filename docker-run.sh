@@ -3,12 +3,12 @@ set -e
 
 # Check for image name passed to script
 if [ -z "$1" ]; then
-    printf "You must provide the name of the image you built for this script, via 'sh docker_run.sh {jenkins_image_name}'\n"
+    printf "You must provide the name of the image you built for this script, via 'sh docker-run.sh {jenkins_image_name}'\n"
     exit 1
 fi
 
 # Grab all the images you may need for jobs, including the Jenkins LTS image
-printf "Pulling images listed in docker_run.sh ...\n"
+printf "Pulling images listed in docker-run.sh ...\n"
 docker image pull jenkins/jenkins:lts
 
 # Stop & remove container, if running
@@ -35,5 +35,5 @@ docker container run \
     --name "$container_name" \
     "$1" >/dev/null
 
-printf "Started container with name: '$container_name'\n"
+printf "\nStarted container with name: '$container_name'\n"
 exit 0

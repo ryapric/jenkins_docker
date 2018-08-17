@@ -58,7 +58,7 @@ least one other `deb` package needs to be installed (`libltdl-dev`). You can
 build an image via (feel free to change the image name):
     - `docker build -t jenkins_docker .`
 
-1. Run `docker_run.sh`, with the name of the new Jenkins image as the sole
+1. Run `docker-run.sh`, with the name of the new Jenkins image as the sole
 argument. This script starts an instance of the Jenkins image you just built,
 mounts the `jenkins_home` Docker volume, binds ports `8080` and `50000`, and
 gives the container access to the host Docker socket. The container is deployed
@@ -66,7 +66,7 @@ with the friendly name "jenkins", which is printed to `stdout` as a reminder
 once the script completes successfully. If you re-run this script for any reason
 after the initial run, it will automatically shut down any running containers
 with the name "jenkins".
-    - `sh docker_run.sh jenkins_docker`
+    - `sh docker-run.sh jenkins_docker`
 
 1. Browse to `<machine-ip-address>:8080`, and paste the password that is output
 from the following command. This allows you to perform the initial configuration
@@ -82,7 +82,7 @@ Jenkins --> Manage Plugins".
 _**That's it!**_ Five commands and some UI prompts, and you're all set to start
 configuring your builds & jobs!
 
-If you want to make some `docker_run` changes, just save them and re-run the
+If you want to make some `docker-run` changes, just save them and re-run the
 script. As stated above, it should handle the container restart for you pretty
 elegantly.
 
@@ -102,7 +102,7 @@ boilerplate to VC your own desired Jenkins configurations. Some ideas:
 pre-installed when the container runs (good if you don't want Docker to be the
 build agent inside the Jenkins container)
 
-- Modify the `docker_run` script to mount more volumes, change port bindings,
+- Modify the `docker-run` script to mount more volumes, change port bindings,
 edit other runtime configs, etc.
 
 - Etc.
